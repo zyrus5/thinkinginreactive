@@ -1,0 +1,18 @@
+tir:
+  db:
+    host: localhost
+    port: 5432
+    schema: tir
+    username: postgres
+    password: 123456
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://${tir.db.host}:${tir.db.port}/${tir.db.schema}
+    username: ${tir.db.username}
+    password: ${tir.db.password}
+  flyway:
+    url: jdbc:postgresql://${tir.db.host}:${tir.db.port}/${tir.db.schema}
+    user: ${tir.db.username}
+    password: ${tir.db.password}
+    driver-class-name: org.postgresql.Driver
