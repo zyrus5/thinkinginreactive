@@ -11,6 +11,11 @@ spring:
     url: r2dbc:postgresql://${tir.db.host}:${tir.db.port}/${tir.db.schema}
     username: ${tir.db.username}
     password: ${tir.db.password}
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 20
+      max-idle-time: 30m
   flyway:
     url: jdbc:postgresql://${tir.db.host}:${tir.db.port}/${tir.db.schema}
     user: ${tir.db.username}

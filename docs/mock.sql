@@ -5,7 +5,7 @@ CREATE SEQUENCE IF NOT EXISTS seq_tir_order_id
     NO MAXVALUE
     CACHE 100;
 
-CREATE SEQUENCE IF NOT EXISTS seq_tir_order_detail_id
+CREATE SEQUENCE IF NOT EXISTS seq_tir_order_line_id
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -98,7 +98,7 @@ BEGIN
                     v_order_real := v_order_real + v_real_amount;
 
                     -- 暂存明细，稍后统一插入
-                    INSERT INTO tir_order_detail (
+                    INSERT INTO tir_order_line (
                         id,
                         order_id,
                         product_id,
@@ -116,7 +116,7 @@ BEGIN
                         f_version
                     )
                     VALUES (
-                               nextval('seq_tir_order_detail_id'),
+                               nextval('seq_tir_order_line_id'),
                                v_order_id,
                                v_product_id,
                                '测试商品' || v_product_id,
